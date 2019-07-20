@@ -117,9 +117,9 @@ you may continue to use the + operator for string concatenation.
 export function multiplyArrayWithThreeNumbers(multArr) { //eslint-disable-line
     multArr = [2, 3, 4];
     const firstArrResult = multiply(multArr[0], multArr[1]);
-    const secondArrResult = sum(firstArrResult[0], multArr[2]);
-    const sumMsg = ('The numbers ' + multArr[0] + ',' + multArr[1] + ',' + multArr[2] + ' have a sum of ' + secondArrResult[0] + '.');
-    return [secondArrResult[0], sumMsg];
+    const secondArrResult = multiply(firstArrResult[0], multArr[2]);
+    const multMsg = ('The numbers ' + multArr[0] + ',' + multArr[1] + ',' + multArr[2] + ' have a product of ' + secondArrResult[0] + '.');
+    return [secondArrResult[0], multMsg];
 }
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. 
@@ -140,8 +140,38 @@ This function should be dynamic, accepting an array of any length.
 */
 
 export function multiplyAnyArray(dynamicArray) { //eslint-disable-line
+    //dynamicArray = [1, 2, 3, 4, 5];
+    // const firstArrResult = multiply(dynamicArray[0], dynamicArray[1]);
+    // const secondArrResult = multiply(firstArrResult[0], dynamicArray[2]);
+    // const thirdArrResult = multiply(secondArrResult[0], dynamicArray[3]);
+    // const fourthArrResult = multiply(thirdArrResult[0], dynamicArray[4]);
 
+
+    // const multMsg = ('The numbers ' + dynamicArray[0] + ',' + dynamicArray[1] + ',' + dynamicArray[2] + ',' + dynamicArray[3] + ',' + dynamicArray[4] + ' have a product of ' + fourthArrResult[0] + '.');
+    // return [fourthArrResult[0], multMsg];
+    const msg1 = 'The numbers ';
+    const msg2 = ' have a product of ';
+    let msg3 = '';
+    let product = 1;
+    for(let i = 0; i < dynamicArray.length; i++){
+        product = multiply(dynamicArray[i], product)[0];
+        
+        // if(i === 0){
+        //     msg3 += dynamicArray[i];
+        // } else {
+        // }
+
+        msg3 = msg3 + ',' + dynamicArray[i];   
+    }
+    // dynamicArray.forEach(element => {
+    //     product = multiply(element, product)[0];
+    //     msg3 = msg3 + ',' + element;
+    // });
+    const finalMsg = msg1 + msg3.substr(1) + msg2 + product + '.';
+    console.log(finalMsg);
+    return [product, finalMsg];
 }
+    
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. 
 // You're done! Submit the link to the repo following the instructions in Canvas.
