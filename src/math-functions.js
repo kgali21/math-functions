@@ -155,20 +155,10 @@ export function multiplyAnyArray(dynamicArray) { //eslint-disable-line
     let product = 1;
     for(let i = 0; i < dynamicArray.length; i++){
         product = multiply(dynamicArray[i], product)[0];
-        
-        // if(i === 0){
-        //     msg3 += dynamicArray[i];
-        // } else {
-        // }
 
         msg3 = msg3 + ',' + dynamicArray[i];   
     }
-    // dynamicArray.forEach(element => {
-    //     product = multiply(element, product)[0];
-    //     msg3 = msg3 + ',' + element;
-    // });
     const finalMsg = msg1 + msg3.substr(1) + msg2 + product + '.';
-    console.log(finalMsg);
     return [product, finalMsg];
 }
     
